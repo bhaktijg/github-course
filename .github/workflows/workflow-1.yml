@@ -1,5 +1,5 @@
 name: Build and Deploy application
-on: workflow_dispatch
+on: push
 jobs:
     build-job:
         runs-on: ubuntu-latest
@@ -16,10 +16,10 @@ jobs:
               run: npm install
 
             - name: Run Linting
-              run: echo "linting...."
+              run: npm run lint
 
             - name: Run Tests
-              run: npm test
+              run: npm run test
 
             - name: Build Application
               run: npm run build
