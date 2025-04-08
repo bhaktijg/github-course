@@ -1,0 +1,28 @@
+name: Build and Deploy application
+on: workflow_dispatch
+jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository Code
+              uses: actions/checkout@v4
+
+            - name: Install NodeJs
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+                
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Run Linting
+              run: echo "linting...."
+
+            - name: Run Tests
+              run: npm test
+
+            - name: Build Application
+              run: npm run build
+
+            - name: Deploy Application
+              run: echo "deploying application....."
